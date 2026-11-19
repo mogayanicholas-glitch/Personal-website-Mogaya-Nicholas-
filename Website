@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nicholas Mogaya – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#071333; --bg2:#0e2257; --surface:rgba(14,34,87,.72); --ink:#eaf2ff; --muted:#a6b8de;
+  --line:rgba(120,170,255,.3); --cyan:#4cc9ff; --violet:#8a97ff; --ice:#bdf3ff; --deep:#1a3a8f;
+  --star:#cfe6ff; --on-cyan:#041030;
+  color-scheme: dark; box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg:#eef3ff; --bg2:#d7e3ff; --surface:rgba(255,255,255,.82); --ink:#071333; --muted:#3d5185;
+    --line:rgba(20,60,160,.28); --cyan:#0a63ff; --violet:#4a5bd9; --ice:#cfe0ff; --deep:#1a3a8f;
+    --star:#1b3a8f; --on-cyan:#ffffff; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg:#eef3ff; --bg2:#d7e3ff; --surface:rgba(255,255,255,.82); --ink:#071333; --muted:#3d5185;
+  --line:rgba(20,60,160,.28); --cyan:#0a63ff; --violet:#4a5bd9; --ice:#cfe0ff; --deep:#1a3a8f;
+  --star:#1b3a8f; --on-cyan:#ffffff; color-scheme: light;
+}
+html { height:100%; scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior:smooth; }
+*, *::before, *::after { box-sizing:border-box; }
+body { margin:0; min-height:100%; color:var(--ink); font-family:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif; font-size:1.05rem; line-height:1.65;
+  background: radial-gradient(1100px 600px at 85% -8%, var(--bg2), transparent 70%), var(--bg); background-attachment: fixed; }
+h1,h2,h3 { font-family:"Chakra Petch","Manrope",system-ui,sans-serif; margin:0; line-height:1.08; }
+a { color:var(--cyan); }
+:focus-visible { outline:3px solid var(--cyan); outline-offset:3px; border-radius:3px; }
+#sky { position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+.wrap { position:relative; z-index:1; max-width:66rem; margin:0 auto; padding:0 1.5rem; }
+.top { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding:1.4rem 0; }
+.brand { font-family:"Chakra Petch",system-ui,sans-serif; font-weight:700; font-size:1.2rem; color:var(--ink); text-decoration:none; }
+.top nav { display:flex; gap:1.25rem; flex-wrap:wrap; }
+.top nav a { color:var(--ink); text-decoration:none; font-weight:600; }
+.top nav a:hover { color:var(--cyan); }
+
+.hero { position:relative; overflow:hidden; padding:5rem 0 4.5rem; }
+.hero h1 { font-weight:700; font-size:clamp(2.8rem,10vw,6.6rem); letter-spacing:-.02em; }
+.hero .role { font-family:"Chakra Petch",system-ui,sans-serif; font-size:clamp(1.1rem,3vw,1.6rem); color:var(--cyan); margin-top:1rem; }
+.hero p { max-width:34rem; color:var(--muted); font-size:1.15rem; margin:1.25rem 0 0; }
+.cta { display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem; }
+.btn { display:inline-block; font:inherit; font-weight:800; padding:.8rem 1.5rem; border-radius:.5rem; text-decoration:none; border:2px solid var(--cyan); cursor:pointer; }
+.btn.fill { background:var(--cyan); color:var(--on-cyan); }
+.btn.line { background:transparent; color:var(--cyan); }
+.btn:hover { box-shadow:0 0 22px color-mix(in srgb, var(--cyan) 55%, transparent); }
+.plane { position:absolute; top:12%; left:-90px; width:64px; height:64px; color:var(--cyan); filter:drop-shadow(0 0 8px var(--cyan)); animation:fly 15s linear infinite; }
+.plane2 { top:68%; width:36px; height:36px; color:var(--violet); filter:drop-shadow(0 0 6px var(--violet)); animation-duration:22s; animation-delay:-8s; }
+@keyframes fly {
+  0% { left:-90px; transform:translateY(40px) rotate(8deg); }
+  50% { transform:translateY(-28px) rotate(-6deg); }
+  100% { left:calc(100% + 90px); transform:translateY(30px) rotate(6deg); }
+}
+
+section { padding:3.5rem 0; border-top:1px solid var(--line); }
+.sec-h { display:flex; justify-content:space-between; align-items:end; gap:1rem; flex-wrap:wrap; margin-bottom:1.75rem; }
+.sec-h h2, .page-h { font-size:clamp(1.9rem,5vw,3rem); font-weight:700; }
+.filters { display:flex; gap:.5rem; flex-wrap:wrap; }
+.filters button { font:inherit; font-weight:600; padding:.45rem 1rem; border-radius:.4rem; border:1px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+.filters button[aria-pressed="true"] { background:var(--cyan); color:var(--on-cyan); border-color:var(--cyan); }
+
+.grid { display:grid; gap:1.25rem; grid-template-columns:1fr; }
+@media (min-width:40rem){ .grid { grid-template-columns:repeat(2,1fr); } }
+@media (min-width:62rem){ .grid { grid-template-columns:repeat(3,1fr); } }
+.tile { all:unset; box-sizing:border-box; cursor:pointer; display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:.8rem; overflow:hidden; color:var(--ink); }
+.tile:focus-visible { outline:3px solid var(--cyan); outline-offset:3px; }
+.tile[hidden] { display:none; }
+.tile:hover { border-color:var(--cyan); box-shadow:0 0 26px color-mix(in srgb, var(--cyan) 30%, transparent); }
+.art { height:10.5rem; border-bottom:1px solid var(--line); }
+.info { padding:1rem 1.15rem 1.2rem; }
+.tile h3 { font-size:1.3rem; font-weight:600; }
+.cat { color:var(--muted); font-size:.95rem; margin-top:.3rem; }
+.a1 { background:radial-gradient(circle at 30% 40%, var(--ice) 0 14%, transparent 15%), conic-gradient(from 90deg at 70% 60%, var(--deep), var(--cyan), var(--violet), var(--deep)); }
+.a2 { background:linear-gradient(var(--cyan),var(--cyan)) 18% 28%/42% 50% no-repeat, linear-gradient(var(--violet),var(--violet)) 42% 52%/42% 50% no-repeat, var(--deep); }
+.a3 { background:radial-gradient(var(--ice) 18%, transparent 20%) 0 0/1.5rem 1.5rem, var(--deep); }
+.a4 { background:repeating-linear-gradient(135deg, var(--deep) 0 1rem, var(--cyan) 1rem 1.15rem, var(--violet) 1.15rem 2.15rem); }
+.a5 { background:repeating-radial-gradient(circle at 60% 50%, var(--cyan) 0 .15rem, transparent .15rem 1rem), var(--deep); }
+.a6 { background:linear-gradient(115deg, var(--cyan) 0 45%, var(--deep) 45% 100%); }
+
+dialog { border:1px solid var(--cyan); border-radius:.9rem; padding:0; width:min(34rem,calc(100% - 2rem)); background:var(--bg); color:var(--ink); }
+dialog::backdrop { background:rgba(2,8,26,.7); }
+dialog .art { height:8.5rem; }
+.dlg-body { padding:1.4rem; }
+.dlg-body h3 { font-size:1.7rem; font-weight:700; }
+.tags { display:flex; gap:.5rem; flex-wrap:wrap; padding:0; margin:1rem 0; list-style:none; }
+.tags li { border:1px solid var(--line); border-radius:.4rem; padding:.1rem .7rem; font-size:.9rem; color:var(--muted); }
+.dlg-actions { display:flex; gap:.75rem; flex-wrap:wrap; }
+
+.skills { display:grid; gap:1.25rem; }
+@media (min-width:40rem){ .skills { grid-template-columns:repeat(3,1fr); } }
+.skills div { border-top:3px solid var(--cyan); padding-top:.8rem; }
+.skills h3 { font-size:1.25rem; font-weight:600; margin-bottom:.4rem; }
+.skills p { margin:0; color:var(--muted); }
+.timeline { list-style:none; margin:0; padding:0 0 0 1.4rem; border-left:2px solid var(--line); }
+.timeline li { position:relative; padding:0 0 1.6rem 1.2rem; }
+.timeline li::before { content:""; position:absolute; left:-2.05rem; top:.5rem; width:.8rem; height:.8rem; border-radius:50%; background:var(--cyan); box-shadow:0 0 12px var(--cyan); }
+.timeline b { font-family:"Chakra Petch",system-ui,sans-serif; font-size:1.15rem; }
+.timeline span { display:block; color:var(--muted); }
+
+.contact { background:var(--surface); border:1px solid var(--line); border-radius:1rem; padding:2.5rem 1.75rem; }
+.contact h2 { font-size:clamp(2rem,6vw,3.6rem); font-weight:700; }
+.mail { display:inline-block; margin-top:1.1rem; font-family:"Chakra Petch",system-ui,sans-serif; font-weight:700; font-size:clamp(1.3rem,4.5vw,2.1rem); word-break:break-word; }
+.links { display:flex; gap:1.25rem; flex-wrap:wrap; margin-top:1.1rem; }
+
+.page { padding:2.5rem 0 3rem; }
+.page .lead { color:var(--muted); max-width:36rem; margin:.8rem 0 2rem; }
+.posts { display:grid; gap:1.1rem; }
+.post { display:block; text-decoration:none; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:.8rem; padding:1.3rem 1.4rem; }
+.post:hover { border-color:var(--cyan); }
+.post h3 { font-size:1.4rem; font-weight:600; margin:.3rem 0 .5rem; }
+.post p { margin:0; color:var(--muted); }
+.meta { color:var(--cyan); font-size:.92rem; font-weight:600; }
+.article { max-width:42rem; }
+.article h1 { font-size:clamp(2rem,6vw,3.2rem); font-weight:700; margin:.6rem 0 .4rem; }
+.article p { margin:1.1rem 0; }
+.back { display:inline-block; font-weight:700; margin-bottom:.5rem; }
+footer { padding:2rem 0 3rem; color:var(--muted); font-size:.95rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .plane { animation:none; left:70%; } .plane2 { display:none; } }
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top">Nicholas Mogaya</a>
+    <nav aria-label="Main"><a href="#work">Work</a><a href="#skills">Skills</a><a href="#path">Path</a><a href="#blog">Blog</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <div id="v-home">
+    <main id="top">
+      <div class="hero">
+        <svg class="plane" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M2 30 62 4 40 60 30 38z"/></svg>
+        <svg class="plane plane2" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M2 30 62 4 40 60 30 38z"/></svg>
+        <h1>Nicholas Mogaya</h1>
+        <div class="role">Educator. Developer. Builder.</div>
+        <p>I build web apps and teach IT so it makes sense. Clear code, clear lessons, and interfaces that feel like the future.</p>
+        <div class="cta"><a class="btn fill" href="#work">See my work</a><a class="btn line" href="#blog">Read the blog</a></div>
+      </div>
+
+      <section id="work">
+        <div class="sec-h">
+          <h2>Selected work</h2>
+          <div class="filters" role="group" aria-label="Filter projects">
+            <button type="button" data-f="all" aria-pressed="true">All</button>
+            <button type="button" data-f="Web app" aria-pressed="false">Web apps</button>
+            <button type="button" data-f="Design" aria-pressed="false">Design</button>
+            <button type="button" data-f="Teaching" aria-pressed="false">Teaching</button>
+          </div>
+        </div>
+        <div class="grid" id="grid"></div>
+      </section>
+
+      <section id="skills">
+        <div class="sec-h"><h2>What I do</h2></div>
+        <div class="skills">
+          <div><h3>Web development</h3><p>HTML, CSS, JavaScript, and React. Fast, accessible, responsive.</p></div>
+          <div><h3>Visual design</h3><p>Interfaces, brand assets, and design systems.</p></div>
+          <div><h3>Teaching and docs</h3><p>Study guides, exam papers, workshops, and technical writing.</p></div>
+        </div>
+      </section>
+
+      <section id="path">
+        <div class="sec-h"><h2>Path so far</h2></div>
+        <ol class="timeline">
+          <li><b>Educator and developer, your organization</b><span>2024 to now. Sample entry: replace with your role.</span></li>
+          <li><b>Front-end developer, your studio</b><span>2021 to 2024. Sample entry: add your real experience.</span></li>
+          <li><b>Your degree, your university</b><span>2017 to 2021. Sample entry.</span></li>
+        </ol>
+      </section>
+
+      <section id="contact">
+        <div class="contact">
+          <h2>Let’s build something.</h2>
+          <a class="mail" href="mailto:hello@example.com">hello@example.com</a>
+          <div class="links"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">YouTube</a></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="v-blog" class="page" hidden>
+    <h1 class="page-h">Blog</h1>
+    <p class="lead">Notes on programming, operating systems, and building for the web.</p>
+    <div class="posts" id="posts"></div>
+  </div>
+
+  <div id="v-post" class="page" hidden>
+    <article class="article">
+      <a class="back" href="#blog">← Back to blog</a>
+      <div class="meta" id="pm"></div>
+      <h1 id="pt"></h1>
+      <div id="pb"></div>
+    </article>
+  </div>
+
+  <footer>© <span id="yr">2026</span> Nicholas Mogaya. Sample content, replace with your own.</footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dt">
+  <div class="art" id="dart"></div>
+  <div class="dlg-body">
+    <h3 id="dt"></h3><p id="dd"></p><ul class="tags" id="dtags"></ul>
+    <div class="dlg-actions"><a class="btn fill" href="#">Visit project</a><button class="btn line" type="button" id="close">Close</button></div>
+  </div>
+</dialog>
+
+<script>
+var P = [
+  {t:"Study Planner", c:"Web app", a:"a1", d:"A planner that turns a semester syllabus into weekly tasks with reminders, built for students juggling several courses.", g:["JavaScript","PWA","Reminders"]},
+  {t:"Exam Paper Builder", c:"Web app", a:"a5", d:"A tool that assembles exam papers and model answers from a question bank, then exports them print-ready.", g:["React","Export","Question bank"]},
+  {t:"C Programming Handbook", c:"Teaching", a:"a3", d:"A study guide with worked examples and model answers for first-year programming students.", g:["Writing","Exam prep","Layout"]},
+  {t:"Operating Systems Workshop", c:"Teaching", a:"a6", d:"A hands-on series on processes, memory, and scheduling, with diagrams and short quizzes.", g:["Workshop","Diagrams","Quizzes"]},
+  {t:"Visual Asset Pack", c:"Design", a:"a4", d:"Logos, covers, and social graphics with one consistent navy and cyan system.", g:["Branding","Covers","Graphics"]},
+  {t:"Orbit Dashboard", c:"Design", a:"a2", d:"A dashboard concept with clear charts, quick filters, and a calm dark interface.", g:["Figma","Prototype","Charts"]}
+];
+var B = [
+  {id:"process-scheduling-explained", t:"Process scheduling, explained with a queue at the bank", dt:"Nov 4, 2026", m:5, e:"Why the CPU behaves like a busy bank teller, and what that means for round robin and priority scheduling.",
+   b:["Picture one teller and a long line. That teller is the CPU, and every customer is a process waiting for a turn. The scheduler’s job is to decide who goes next.","First come, first served is simple but unfair: one long transaction blocks everyone behind it. Round robin fixes this by giving each customer a fixed time slice, then sending them to the back of the line if they are not done.","Priority scheduling lets urgent work jump ahead, but low-priority processes can starve. Real systems blend these ideas, and the exam trick is to draw the timeline before you calculate anything."]},
+  {id:"five-habits-for-c-programming", t:"Five habits that make C programming easier", dt:"Oct 21, 2026", m:4, e:"Small routines that prevent the bugs students hit most often.",
+   b:["C gives you power and very few safety nets. Good habits are your safety net.","Initialize every variable. Check every pointer before you use it. Free what you allocate. Compile with warnings turned on. Test with small inputs first.","None of these are clever. They work because they stop bugs before they start, and that saves hours of debugging."]},
+  {id:"build-your-first-website-in-a-weekend", t:"Build your first website in a weekend", dt:"Oct 6, 2026", m:3, e:"A simple plan: one page, one purpose, then publish it.",
+   b:["Start with a single page that says who you are, what you do, and how to reach you.","Write the content first, then add structure with HTML, then style with CSS. Keep it small enough to finish.","Publish it on a free host and share the link. A live simple site beats a perfect one that never ships."]}
+];
+var $ = function (id) { return document.getElementById(id); };
+var grid = $('grid'), dlg = $('dlg');
+P.forEach(function (p) {
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'tile'; b.dataset.c = p.c;
+  b.innerHTML = '<div class="art ' + p.a + '"></div><div class="info"><h3>' + p.t + '</h3><div class="cat">' + p.c + '</div></div>';
+  b.addEventListener('click', function () {
+    $('dt').textContent = p.t; $('dd').textContent = p.d; $('dart').className = 'art ' + p.a;
+    var ul = $('dtags'); ul.innerHTML = '';
+    p.g.forEach(function (x) { var li = document.createElement('li'); li.textContent = x; ul.appendChild(li); });
+    try { dlg.showModal(); } catch (e) { dlg.setAttribute('open', ''); }
+  });
+  grid.appendChild(b);
+});
+document.querySelectorAll('.filters button').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.filters button').forEach(function (o) { o.setAttribute('aria-pressed', o === btn ? 'true' : 'false'); });
+    var f = btn.dataset.f;
+    grid.querySelectorAll('.tile').forEach(function (t) { t.hidden = !(f === 'all' || t.dataset.c === f); });
+  });
+});
+$('close').addEventListener('click', function () { try { dlg.close(); } catch (e) { dlg.removeAttribute('open'); } });
+dlg.addEventListener('click', function (e) { if (e.target === dlg) { try { dlg.close(); } catch (x) {} } });
+
+B.forEach(function (p) {
+  var a = document.createElement('a');
+  a.className = 'post'; a.href = '#post-' + p.id;
+  a.innerHTML = '<div class="meta">' + p.dt + ' · ' + p.m + ' min read</div><h3>' + p.t + '</h3><p>' + p.e + '</p>';
+  $('posts').appendChild(a);
+});
+
+function route() {
+  var h = location.hash.slice(1), post = null;
+  B.forEach(function (p) { if (h === 'post-' + p.id) post = p; });
+  $('v-home').hidden = !!(h === 'blog' || post);
+  $('v-blog').hidden = h !== 'blog';
+  $('v-post').hidden = !post;
+  if (post) {
+    $('pm').textContent = post.dt + ' · ' + post.m + ' min read';
+    $('pt').textContent = post.t;
+    $('pb').innerHTML = '';
+    post.b.forEach(function (x) { var p = document.createElement('p'); p.textContent = x; $('pb').appendChild(p); });
+    document.title = post.t + ' – Nicholas Mogaya';
+    window.scrollTo(0, 0);
+  } else if (h === 'blog') {
+    document.title = 'Blog – Nicholas Mogaya'; window.scrollTo(0, 0);
+  } else {
+    document.title = 'Nicholas Mogaya – Portfolio';
+    var el = h && $(h);
+    if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
+  }
+}
+window.addEventListener('hashchange', route);
+route();
+try { $('yr').textContent = new Date().getFullYear(); } catch (e) {}
+
+var cv = $('sky'), cx = cv.getContext('2d'), W, H, S = [], N = 150, col = '#cfe6ff';
+var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function getCol() { try { col = getComputedStyle(document.documentElement).getPropertyValue('--star').trim() || col; } catch (e) {} }
+function mk() { return { x: (Math.random() - .5) * W, y: (Math.random() - .5) * H, z: Math.random() * W + 1 }; }
+function size() { W = cv.width = innerWidth; H = cv.height = innerHeight; S = []; for (var i = 0; i < N; i++) S.push(mk()); getCol(); }
+function frame() {
+  cx.clearRect(0, 0, W, H); cx.fillStyle = col;
+  for (var i = 0; i < N; i++) {
+    var s = S[i];
+    if (!still) s.z -= 1.6;
+    var f = W * .5, sx = s.x * f / s.z + W / 2, sy = s.y * f / s.z + H / 2;
+    if (s.z <= 1 || sx < 0 || sx > W || sy < 0 || sy > H) { S[i] = mk(); S[i].z = W; continue; }
+    cx.globalAlpha = Math.max(.15, 1 - s.z / W);
+    var r = (1 - s.z / W) * 2 + .3;
+    cx.fillRect(sx, sy, r, r);
+  }
+  cx.globalAlpha = 1;
+  if (!still) requestAnimationFrame(frame);
+}
+window.addEventListener('resize', function () { size(); if (still) frame(); });
+try { window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { getCol(); }); } catch (e) {}
+size(); frame();
+</script>
+</body>
+</html>
